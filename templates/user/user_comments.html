@@ -1,0 +1,79 @@
+  
+{% extends 'layout.html' %}
+{% block title %} User Comments {% endblock %}
+{% block description %} {{ setting.description }} {% endblock %}
+{% block keywords %} {{ setting.keywords }} {% endblock %}
+{% block sidebar %} {% include 'sidebar.html' %} {% endblock %}
+{% block content %}
+    <!-- BREADCRUMB -->
+    <section id="title" class="container-fluid wow fadeInDown">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-6">
+                    <h1>Ürün <small>Yorumlarım</small></h1>
+                </div>
+                <div class="col-xs-6 text-right breadcrumbs">
+                    <ul class="list-inline list-unstyled">
+                        <li><a href="index-2.html">Yorumlar</a></li>
+                        <li>/</li>
+                        <li>Ürünler</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /BREADCRUMB -->
+    <!-- section -->
+    <div class="section">
+        <!-- container -->
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+                <div class="col-md-2">
+                    {% include "user/user_panel.html" %}
+                </div>
+                <div class="col-md-10">
+                    {% if comments%}
+                    <table class="shopping-cart-table table">
+                        <tr>
+                            <th class="text-left">Ürün </th>
+                            <th class="text-left">Ortalama(Rate) </th>
+                            <th class="text-left">Konu </th>
+                            <th class="text-left">Yorum </th>
+                            <th class="text-left">Durum </th>
+                            <th class="text-left">Tarih </th>
+                            <th class="text-left">Detay </th>
+                        </tr>
+                        {% for rs in comments %}
+                            <tr>
+                                <td class="text-left">
+                                    <a href="/product/{{ rs.product_id }}/{{ rs.product.slug }}">
+                                        <strong> {{ rs.product.title}}</strong>
+                                    </a>
+                                </td>
+                                <td class="text-left">{{ rs.rate}} </td>
+                                <td class="text-left">{{ rs.subject}} </td>
+                                <td class="text-left">{{ rs.comment}} </td>
+                                <td class="text-left">{{ rs.status}} </td>
+                                <td class="text-left">{{ rs.create_at}} </td>
+                                <td class="text-left">
+                                    <a class="btn btn-primary" href="/user/deletecomment/{{ rs.id }}" onclick="return confirm('Yorum silenecek ! Emin Misiniz?')"> Delete </a>
+                                </td>
+                            </tr>
+                        
+                        {% endfor %}
+                        {% else %}
+                        <div style="margin-bottom: 400px;" class="text-center">
+                            <div style="margin-top: 200px;">
+                           <h1 > Bir Ürüne Yapılmış Yorumunuz Yok Şu An </h1> </div>
+                        </div>
+                        {% endif %}
+                    </table>
+                </div>
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </div>
+    <!-- /section -->
+{% endblock %}

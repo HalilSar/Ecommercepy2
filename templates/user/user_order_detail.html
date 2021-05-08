@@ -1,0 +1,124 @@
+{% extends 'layout.html' %}
+
+{% block title %} Şipariş Detay {% endblock %}
+{% block description %} {{ setting.description }} {% endblock %}
+{% block keywords %} {{ setting.keywords }} {% endblock %}
+
+{% block sidebar %} {% include 'sidebar.html' %} {% endblock %}
+
+{% block content %}
+
+    <!-- BREADCRUMB -->
+    <section id="title" class="container-fluid wow fadeInDown">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-6">
+                    <h1>Şipariş <small>Detay</small></h1>
+                </div>
+                <div class="col-xs-6 text-right breadcrumbs">
+                    <ul class="list-inline list-unstyled">
+                        <li><a href="index-2.html">Ana Sayfa</a></li>
+                        <li>/</li>
+                        <li>Ürünler</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /BREADCRUMB -->
+    <!-- section -->
+    <div class="section">
+        <!-- container -->
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+                <div style="margin-bottom: 20px;"  class="col-md-3">
+                     {% include "user/user_panel.html" %}
+                </div>
+
+                <div style="margin-bottom: 100px;" class="col-md-9">
+                    
+                    <div class="order-summary clearfix">    
+                        <table style="margin-bottom: 20px;" class="shopping-cart-table table">
+                            <tr>
+                                <th class="text-left">
+                                    <a href="/user/update" class="btn btn-primary">Profili Güncelle</a>
+                                    <a href="/user/password" class="btn btn-primary">Şifreyi Değiştir</a>
+                                </th>
+                                <td><img src="{{ order.user.userprofile.image.url }}" style="border-radius: 45px; height: 200px "></td>
+                            </tr>
+                            <tr>
+                                <th class="text-left">İsim Soyisim</th>
+                                <td class="text-left">{{ order.first_name}} {{ order.last_name}} </td>
+                            </tr>
+                            <tr>
+                                <th class="text-left">Email</th>
+                                <td class="text-left">{{ order.email}}</td>
+                            </tr>
+                            <tr>
+                                <th class="text-left">Telefon</th>
+                                <td class="text-left">{{ order.phone}}</td>
+                            </tr>
+                            <tr>
+                                <th class="text-left">Adres</th>
+                                <td class="text-left">{{ order.address}}</td>
+                            </tr>
+                            <tr>
+                                <th class="text-left">Şehir</th>
+                                <td class="text-left">{{ order.city}}</td>
+                            </tr>
+                            <!-- <tr>
+                                <th class="text-left">Ülke</th>
+                                <td class="text-left">{{ order.country}}</td>
+                            </tr> -->
+                            <tr>
+                                <th class="text-left">Durum</th>
+                                <td class="text-left">{{ order.status}}</td>
+                            </tr>
+                            <tr>
+                                <th class="text-left">Admin Notu</th>
+                                <td class="text-left">{{ order.adminnote}}</td>
+                            </tr>
+    
+                        </table>  
+                        <div class="text-center">
+                            <h3>Şipariş Detay Bilgisi</h3>
+                        </div>                                                                 
+                        <table class="shopping-cart-table table">
+                            <tr>
+                                <th class="text-left">Ürün Resmi</th>
+                                <th class="text-left">Ürün İsmi </th>
+                                <th class="text-left">Fiyat </th>
+                                <th class="text-left">Adet </th>
+                                <th class="text-left">Amount </th>
+                                <th class="text-left">Durum </th>
+                                <th class="text-left">Tarih </th>
+                            </tr>
+                            {% for rs in orderitems %}
+                                <tr>
+                                    <td class="text-left">
+                                        <a href="/product/{{ rs.product_id }}/{{ rs.product.slug }}">
+                                            <img src="{{rs.product.image.url}}" alt="" style="height: 50px">                                            
+                                        </a>
+                                    </td>
+                                    <td class="text-left">{{ rs.product.title}}</td>
+                                    <td class="text-left">{{ rs.price}} </td>
+                                    <td class="text-left">{{ rs.quantity}} </td>
+                                    <td class="text-left">{{ rs.amount}} </td>
+                                    <td class="text-left">{{ rs.status}} </td>
+                                    <td class="text-left">{{ rs.create_at}} </td>
+                                </tr>
+                            {% endfor %}
+
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </div>
+    <!-- /section -->
+
+{% endblock %}

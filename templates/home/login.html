@@ -1,0 +1,124 @@
+{%extends 'layout.html'%}
+{%load static%}
+{% block title %} {{ settings.title }}  Kayıt İşlemi{% endblock %}
+{% block description %} {{ settings.description }} {% endblock %}
+{% block keywords %} {{ settings.keywords }} {% endblock %}
+{% block favicon %}<link rel="shortcut icon" href="{{settings.icon.url}}"/>{% endblock %}
+{% block sidebar %} {% include 'home/slider.html' %} {% endblock %}
+
+{% block content %}
+
+<section id="content ">
+
+    <div class="container">
+
+        <div class="row mt-2">
+
+            <div class="col-xs-12 text-center padding25">
+               
+            </div>
+
+
+            <div class="col-xs-12 mt-2">
+                <div class="padding25">
+                    <h4>GİRİŞ<b> YAP</b></h4>
+                </div>
+
+               <div class="row">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" name="username" class="form-control" placeholder="Kullanıcı Adı" required>
+                        </div>                      
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" class="form-control" placeholder="Parola" required>
+                        </div>                      
+                    <div class="form-group col-xs-12 text-left">
+                        <button type="submit" class="btn btn-primary btn-lg"><i class="fa fa-send fa-fw"></i>GİRİŞ</button>
+                    </div>
+                </form>
+            </div>
+            </div>
+
+            
+
+            <div class="col-md-12">
+                <div class="padding25 text-center">
+                    <h3>OUR <b>OFFICES</b></h3>
+                </div>
+
+                <div class="row text-center">
+
+                    <div class="col-md-3">
+                        <h4><b>UNITED STATES</b></h4>
+                        <p><i class="fa fa-map-marker fa-fw"></i> 379 5th Ave, New York, 10001</p>
+                        <p><i class="fa fa-phone fa-fw"></i> +(112) 345 6879</p>
+                        <p><i class="fa fa-envelope fa-fw"></i> hello@example.com</p>
+                        <button type="submit" class="btn btn-default btn-sm"><i class="fa fa-map-marker fa-fw"></i> View Map</button>
+                        <div class="space20"></div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <h4><b>GERMANY</b></h4>
+                        <p><i class="fa fa-map-marker fa-fw"></i> 379 5th Ave, Berlin, 22158</p>
+                        <p><i class="fa fa-phone fa-fw"></i> +(112) 345 6879</p>
+                        <p><i class="fa fa-envelope fa-fw"></i> hello@example.com</p>
+                        <button type="submit" class="btn btn-default btn-sm"><i class="fa fa-map-marker fa-fw"></i> View Map</button>
+                        <div class="space20"></div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <h4><b>ROMANIA</b></h4>
+                        <p><i class="fa fa-map-marker fa-fw"></i> 379 5th Ave, Bucharest, 07725</p>
+                        <p><i class="fa fa-phone fa-fw"></i> +(112) 345 6879</p>
+                        <p><i class="fa fa-envelope fa-fw"></i> hello@example.com</p>
+                        <button type="submit" class="btn btn-default btn-sm"><i class="fa fa-map-marker fa-fw"></i> View Map</button>
+                        <div class="space20"></div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <h4><b>AUSTRALIA</b></h4>
+                        <p><i class="fa fa-map-marker fa-fw"></i> 379 5th Ave, Melbourne, 58745</p>
+                        <p><i class="fa fa-phone fa-fw"></i> +(112) 345 6879</p>
+                        <p><i class="fa fa-envelope fa-fw"></i> hello@example.com</p>
+                        <button type="submit" class="btn btn-default btn-sm"><i class="fa fa-map-marker fa-fw"></i> View Map</button>
+                        <div class="space20"></div>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="space40"></div>
+
+</section>
+<!-- CONTENT END -->
+
+<!-- CALL TO ACTION START -->
+<section id="call-to-action">
+    <div class="parallax parallax-container">
+        <div class="bg-mask-black"></div>
+        <div class="container text-white">
+            <div class="row">
+                <div class="col-md-10">
+                    <h1>More than <b class="counter">100</b> happy clients! <small class="text-white">Are you interested?</small></h1>
+                </div>
+                <div class="col-md-2 text-center">
+                    <button type="submit" class="btn btn-primary btn-lg margin15 text-uppercase">Join Us Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- CALL TO ACTION END -->
+
+
+{% endblock %}

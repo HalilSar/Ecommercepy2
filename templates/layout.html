@@ -1,0 +1,110 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %} Django Project {% endblock %}</title>
+    <meta name="keywords" content="{% block keywords %} Home Keywords {% endblock %}">
+    <meta name="description" content="{% block description %} Home description  {% endblock %}">
+    <link rel="shortcut icon" href="images/favicon.png" />
+    {%block favicon%}{%endblock%}
+    <!-- LOAD MAIN CSS -->
+    <link href="{%static 'edura/style.css'%}" rel="stylesheet" type="text/css">
+
+    <!-- LOAD COLOR STYLE (OPTONAL) CSS -->
+    <link href="{%static 'edura/styles/lunar.css'%}" rel="stylesheet" type="text/css" id="colorstyle">
+
+    <!-- LOAD CUSTOM CSS -->
+    <link href="{%static 'edura/custom.css'%}" rel="stylesheet" type="text/css">
+
+    <!-- LOAD DEMO CSS -->
+    <link href="{%static 'edura/demo/demo.css'%}" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"> </script>
+    <!-- jQuery UI !-->
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+    <div class="row">
+        <script>
+            $(function() {
+                $("#query").autocomplete({
+                    source: "/search_auto/",
+                    select: function (event, ui) { //item selected
+                        AutoCompleteSelectHandler(event, ui)
+                    },
+                    minLength: 2,
+                });
+            });
+            function AutoCompleteSelectHandler(event, ui)
+            {
+                var selectedObj = ui.item;
+            }
+        </script>
+
+    {% include 'partials/_navbar.html' %}
+    {%if page%}
+    {% block sidebar %} {% endblock %}
+    {%endif%}
+    <main>
+        {% include 'partials/_alert.html' %}
+        <div>
+            {% block content %}
+            {% endblock %}
+        </div>
+    </main>
+    <section id="call-to-action">
+        <div class="parallax parallax-container">
+            <div class="bg-mask-black"></div>
+            <div class="container text-white">
+                <div class="row">
+                    <div class="col-md-10">
+                        <h1>More than <b class="counter">100</b> happy clients! <small class="text-white">Are you
+                                interested?</small></h1>
+                    </div>
+                    <div class="col-md-2 text-center">
+                        <button type="submit" class="btn btn-primary btn-lg margin15 text-uppercase">Join Us
+                            Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- {% block footer %} Footer {% endblock %} -->
+
+    {% include 'partials/_footer.html' %}
+    <!-- <script src="{%static 'edura/vendor/jquery/jquery.min.js'%}"></script> -->
+
+    <script src="{%static 'edura/vendor/bootstrap/js/bootstrap.min.js'%}"></script>
+    <script src="{%static 'edura/vendor/bootstrap-hover-dropdown/bootstrap-hover-dropdown.js'%}"></script>
+    <script src="{%static 'edura/vendor/wow/wow.min.js' %}"></script>
+    <script src="{%static 'edura/vendor/imagesloaded/imagesloaded.pkgd.min.js'%}"></script>
+    <script src="{%static 'edura/vendor/SmoothScroll/SmoothScroll.min.js'%}"></script>
+
+    <script src="{%static 'edura/vendor/waypoints/waypoints.min.js'%}"></script>
+    <script src="{%static 'edura/vendor/counterup/jquery.counterup.min.js'%}"></script>
+
+
+    <!-- HERO SLIDER-->
+    <script src="{%static 'edura/vendor/hero-slider/js/modernizr.js'%}"></script>
+    <script src="{%static 'edura/vendor/hero-slider/js/main.js'%}"></script>
+
+    <!-- OWL CAROUSEL -->
+    <script src="{%static 'edura/vendor/owl-carousel/owl.carousel.js'%}"></script>
+
+    <!-- FILTERIZR -->
+    <script src="{%static 'edura/vendor/jquery/jquery.filterizr.js'%}"></script>
+
+    <!-- EDURA JS REQUIRED ON ALL PAGES-->
+    <script src="{%static 'edura/edura.js'%}"></script>
+</body>
+
+</html>

@@ -1,0 +1,120 @@
+{%load static%}
+
+<section id="header">
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">
+                    <img src="{% static 'images/edura-logo.png'%}" alt="Edura - Multipurpose Website Template">
+                </a>
+            </div>
+
+            <div id="navbar" class="navbar-collapse collapse">
+                
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
+                            role="button" aria-haspopup="true" aria-expanded="false">Ana Sayfa</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{% static 'edura/index-2.html' %} ">Homepage 1</a></li>
+                            <li><a href="{% static 'edura/index-3.html' %}">Homepage 2</a></li>
+                            <li><a href="{% static 'edura/index-4.html' %}">Homepage 3</a></li>
+                            <li><a href="{% static 'edura/index-5.html' %}">Homepage 4</a></li>
+                            <li><a href="{% static 'edura/index-6.html' %}">Home 5 (Full Carousel)</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="{% url 'aboutus' %}" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
+                            role="button" aria-haspopup="true" aria-expanded="false">Hakkımızda</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{% url 'aboutus' %}">Hakkımızda</a></li>
+                            <li><a href="pricing.html">Pricing</a></li>
+                            <li><a href="services.html">Servis</a></li>
+                            <li><a href="faq.html">FAQ</a></li>
+                            <li><a href="404.html">404 Error</a></li>
+                        </ul>
+                    </li>
+
+
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
+                            role="button" aria-haspopup="true" aria-expanded="false">Alışveriş</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="shop-product.html">Product</a></li>
+                            <li><a href="shop-product-sidebar-left.html">Product Sidebar Left</a></li>
+                            <li><a href="shop-product-sidebar-right.html">Product Sidebar Right</a></li>
+                            <li><a href="shop-catalog.html">Catalog</a></li>
+                            <li><a href="shop-catalog-sidebar-left.html">Catalog Sidebar Left</a></li>
+                            <li><a href="shop-catalog-sidebar-right.html">Catalog Sidebar Right</a></li>
+                            <li><a href="shop-cart.html">Shopping Cart</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
+                            role="button" aria-haspopup="true" aria-expanded="false">İletişim</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="contactus-1.html">Contact Us 1</a></li>
+                            <li><a href="contactus-2.html">Contact Us 2</a></li>
+                            <li><a href="contactus-3.html">Contact Us 3</a></li>
+                            <li><a href="contactus-4.html">Contact Us 4</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="{% url 'shopcart' %}"><i class="fa fa-shopping-cart fa-fw"></i> 
+                        {%if request.session.cart_items == 0 %}
+                            Sepet 
+                        {% else %}
+                            Sepet ({{request.session.cart_items}})
+                        {%endif%}
+                    </a></li>
+
+                    {% if user.is_authenticated %}
+                    
+                    <li class="nav-item">
+                        
+                        <a href="javascript:{document.getElementById('logout').submit()}" class="nav-link">({{ user.username }}) 
+                             Çıkış</a>
+                    <form action="{% url 'logout' %}" method="POST" id="logout">
+                        {%csrf_token%}
+                        <input type="hidden">  
+                    </form>
+                           
+                    </li>
+                    {% else %}
+                    <li {% if 'login' in request.path %} class="nav-item active" {% else %} class="nav-item" {%endif %}>
+                        
+                        <a href="{% url 'login' %}" class="nav-link">Giriş</a>
+                    </li>
+                    <li {% if 'register' in request.path %} class="nav-item active" {% else %} class="nav-item" {%endif %}>
+                        
+                        <a href="#" class="nav-link">Kayıt</a>
+
+                    {% endif %}
+                </ul>
+
+
+
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+    </nav>
+</section>
+    
+    
+    
+
+
+
+
+<!--  -->

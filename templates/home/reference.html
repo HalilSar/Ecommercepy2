@@ -1,0 +1,64 @@
+{% extends 'layout.html' %}
+{% block title %} REFERANSLARIMIZ {{ settings.company }} {% endblock %}
+{% block description %} {{ settings.description }} {% endblock %}
+{% block keywords %} {{ settings.keywords }} {% endblock %}
+
+
+{% block content %}
+<section id="title" class="container-fluid wow fadeInDown">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-6">
+                <h1>REFERANSLARIMIZ</h1>
+            </div>
+            <div class="col-xs-6 text-right breadcrumbs">
+                <ul class="list-inline list-unstyled">
+                    <li><a href="index-2.html">Home</a></li>
+                    <li>/</li>
+                    <li>About Us</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- PAGE TITLE END -->
+
+
+<!-- CONTENT START -->
+<section id="content">
+
+    <div class="container">
+        <div class="row">
+            {{ settings.references|safe}}
+        </div>
+    </div>
+
+
+
+
+
+
+
+  
+  
+</section>
+<!-- CONTENT END -->
+
+<!-- CALL TO ACTION START -->
+<section id="call-to-action">
+    <div class="parallax parallax-container">
+        <div class="bg-mask-black"></div>
+        <div class="container text-white">
+            <div class="row">
+                <div class="col-md-10">
+                    <h1>More than <b class="counter">100</b> happy clients! <small class="text-white">Are you interested?</small></h1>
+                </div>
+                <div class="col-md-2 text-center">
+                    <button type="submit" class="btn btn-primary btn-lg margin15 text-uppercase">Join Us Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{%endblock%}

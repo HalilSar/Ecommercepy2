@@ -1,0 +1,133 @@
+{% extends 'layout.html' %}
+{% block title %} Sipariş Onay {% endblock %}
+<!-- {% block description %} {{ settings.description }} {% endblock %}
+{% block keywords %} {{ settings.keywords }} {% endblock %} -->
+{% block favicon %}<link rel="shortcut icon" href="{{settings.icon.url}}"/>{% endblock %}
+
+
+
+{% block content %}
+<section id="title" class="container-fluid wow fadeInDown">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-6">
+                <h2>SİPARİŞ <small>ONAYLAMA</small></h2>
+            </div>
+            <div class="col-xs-6 text-right breadcrumbs">
+                <ul class="list-inline list-unstyled">
+                    <li><a href="index-2.html">Home</a></li>
+                    <li>/</li>
+                    <li>Product</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="content">
+
+    <section id="blog-grid" class="container">
+
+        <div class="row mt-2">
+
+            
+
+
+            
+               
+
+                <div  class="row">
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        <div class="col-md-6">
+                            <div>
+    
+                                <div class="section-title">
+                                    <h4 class="title">Alışveriş Detay</h4>
+                                </div>
+                                
+                                    <label for="id_first_name">İsim:</label>
+                                    <input type="text" name="first_name"  value="{{ user.first_name }}" class="form-control" maxlength="10" required id="id_first_name"></p>
+                                
+                                
+                                    <label for="id_last_name">Soyisim:</label>
+                                    <input type="text" name="last_name"  value="{{ user.last_name }}" class="form-control" maxlength="10" required id="id_last_name"></p>
+                               
+                                
+                                    <label for="id_address">Adres:</label>
+                                    <input type="text" name="address" value="{{ profile.address }}" class="form-control" maxlength="150" id="id_address"></p>
+                                
+                                
+                                    <label for="id_phone">Telefon:</label>
+                                    <input type="text" name="phone"  value="{{ profile.phone }}"  class="form-control" maxlength="20" id="id_phone"></p>
+                               
+                                
+                                    <p><label for="id_city">Şehir:</label>
+                                        <select name="city" class="input-group" id="id_city">
+                                            <option class="form-control" value="{{ profile.city }}" selected>{{ profile.city }}</option>
+                                            <option class="form-control" value="İstanbul">Istanbul</option>
+                                            <option class="form-control" value="Ankara">Ankara</option>
+                                            <option class="form-control" value="İzmir">Izmir</option>
+                                            <option class="form-control" value="Bursa">Bursa</option>
+                                            <option class="form-control" value="Konya">Konya</option>
+                                            <option class="form-control" value="Yozgat">Yozgat</option>
+                                        </select></p>
+                                </div>
+                                <div class="form-group">
+                                    <p><label for="id_country">Country :</label>
+                                        <input type="text" name="country" class="form-control" id="id_country" value="{{ profile.country }}"></p>
+                                </div>
+                                <div class="pull-right">
+                                    <button  type="submit" class="btn btn-primary">Siparişi Tamamla</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="shiping-methods">
+                                <div class="section-title">
+                                    <h4 class="title">Ödeme Bilgileri</h4>
+                                </div>
+                                
+                                <p><label for="total">Toplam Fiyat  </label>
+                                    <input type="text" name="total" class="form-control" readonly value="{{ total }} USD"></p>
+                                
+                                <p><label for="holder">Credit Card Holder</label>
+                                <input type="text" name="holder" class="form-control"  value=""></p>
+                            
+                                <p><label for="number">Credit Card Number</label>
+                                <input type="text" name="number" class="form-control"  value=""></p>
+                            
+                                <p><label for="ecpdate">Credit Exp Date/Year</label>
+                                    <input type="text" name="ecpdate" class="form-control"  placeholder="mm/yy"></p>
+                            
+                            
+                                <p><label for="secnumber">Security Number</label>
+                                    <input type="text" name="secnumber" class="form-control"  value=""></p>
+                                
+                            </div>
+                        </div>
+    
+                    </form>    
+                    </div>
+                </div>
+            
+           
+
+
+            
+
+        </div>
+
+    </div>
+
+    <div class="space40"></div>
+
+</section>
+<!-- CONTENT END -->
+
+<!-- CALL TO ACTION START -->
+
+<!-- CALL TO ACTION END -->
+
+
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends 'layout.html' %}
+
+{% block title %}  {{ user.first_name }} Profile {% endblock %}
+{% block description %} {{ settings.description }} {% endblock %}
+{% block keywords %} {{ settings.keywords }} {% endblock %}
+
+<!-- {% block sidebar %} {% include 'sidebar.html' %} {% endblock %} -->
+
+{% block content %}
+
+    <!-- BREADCRUMB -->
+    <section id="title" class="container-fluid wow fadeInDown">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-6">
+                    <h1>Kullanıcı <small>Sayfam</small></h1>
+                </div>
+                <div class="col-xs-6 text-right breadcrumbs">
+                    <ul class="list-inline list-unstyled">
+                        <li><a href="index-2.html">Ana Sayfa</a></li>
+                        <li>/</li>
+                        <li>Ürünler</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /BREADCRUMB -->
+    
+    <!-- section -->
+    <section id="content">
+
+        <!-- shop section start -->
+        <section id="shop" class="container">
+            <!-- row -->
+            <div class="row">
+
+                <div class="col-md-3">
+                    {% include "user/user_panel.html" %}
+                </div>
+
+                <div class="col-md-9">
+                    <h3 class="title">User Profile Update</h3>
+
+                    <form method="POST" enctype = "multipart/form-data">
+                        {% csrf_token %}
+                        <fieldset class="form-group">
+                            {{ user_form.as_p  }}
+                            {{ profile_form.as_p  }}
+                        </fieldset>
+                        <div class="form-group">
+                            <button class="btn btn-primary" type="submit">Update</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </div>
+    <!-- /section -->
+
+{% endblock %}
+

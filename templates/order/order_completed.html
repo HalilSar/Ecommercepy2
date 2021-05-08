@@ -1,0 +1,63 @@
+{% extends 'layout.html' %}
+
+{% block title %} Şipariş Tamamlandı {% endblock %}
+{% block description %} {{ setting.description }} {% endblock %}
+{% block keywords %} {{ setting.keywords }} {% endblock %}
+
+<!-- {% block sidebar %} {% include 'sidebar.html' %} {% endblock %} -->
+
+{% block content %}
+
+    <!-- BREADCRUMB -->
+    <section id="title" class="container-fluid wow fadeInDown">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-6">
+                    <h1>Ürün Sepeti</h1>
+                </div>
+                <div class="col-xs-6 text-right breadcrumbs">
+                    <ul class="list-inline list-unstyled">
+                        <!-- <li><a href="index-2.html">Ana Sayfa</a></li> -->
+                        <li>/</li>
+                        <li><a href="#">Alışveriş</a></li>
+                        <li>/</li>
+                        <li>Ürün Sepeti</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /BREADCRUMB -->
+    <!-- section -->
+    <div class="section">
+        <!-- container -->
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+
+                <div class="col-md-12">
+                    <div class="order-summary clearfix">
+                        <div class="section-title">
+                            <h3 class="title">Order Complated</h3>
+                        </div>
+                        <hr>
+                        <h2>Dear  {{ user.first_name }} {{  user.last_name }}</h2>
+                        <hr>
+                        <h3>Siparişiniz Tamamlandı</h3>
+                        <h3>Sipariş Kodu : {{ ordercode }}</h3>
+                        <h3>Teşekkürler</h3>
+                        <hr>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </div>
+    <!-- /section -->
+
+{% endblock %}

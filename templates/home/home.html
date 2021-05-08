@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+
+
+{% block title %} {{ settings.title }} {% endblock %}
+{% block description %} {{ settings.description }} {% endblock %}
+{% block keywords %} {{ settings.keywords }} {% endblock %}
+{% block favicon %}<link rel="shortcut icon" href="{{settings.icon.url}}"/>{% endblock %}
+{% block sidebar %} {% include 'home/slider.html' %} {% endblock %}
+
+<!-- {% block slider %} {% include 'slider.html' %} {% endblock %} -->
+
+<!--{% block body %} {% include 'content.html' %}  {% endblock %} -->
+
+{% block footer %} {% include 'partials/_footer.html' %}{% endblock %}
+
+
+

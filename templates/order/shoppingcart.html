@@ -1,0 +1,127 @@
+{% extends 'layout.html' %}
+
+
+{% block title %} Ürün Sepeti {% endblock %}
+<!-- {% block description %} {{ settings.description }} {% endblock %}
+{% block keywords %} {{ settings.keywords }} {% endblock %} -->
+{% block favicon %}<link rel="shortcut icon" href="{{settings.icon.url}}"/>{% endblock %}
+<!-- {% block sidebar %} {% include 'home/slider.html' %} {% endblock %} -->
+
+{%block content%}
+<section id="title" class="container-fluid wow fadeInDown">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-6">
+                <h1>Ürün Sepeti</h1>
+            </div>
+            <div class="col-xs-6 text-right breadcrumbs">
+                <ul class="list-inline list-unstyled">
+                    <li><a href="index-2.html">Home</a></li>
+                    <li>/</li>
+                    <li><a href="#">Shop</a></li>
+                    <li>/</li>
+                    <li>Ürün Sepeti</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- PAGE TITLE END -->
+
+
+<!-- CONTENT START -->
+<section id="content">
+
+    <!-- shop section start -->
+    <section id="cart" class="container">
+
+        <!-- row start -->
+        <div class="row">
+
+            {%if shopcart%}
+            <div class="col-md-8">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Ürün Adı</th>
+                                <th>Ürün Fiyatı</th>
+                                <th class="qtycolumn">Adet</th>
+                                <th>Toplam Fiyat</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        {% for rs in shopcart %}
+                        <tbody>
+                            
+                            <tr>
+                                <td><img alt="" class="img-responsive product-thumb" src="{{ rs.product.image.url }}"></td>
+                                <td><a href="#">{{rs.product.title}}</a></td>
+                                <td>{{rs.product.price}}</td>
+                                <td>
+                                    <div class="form-group">
+                                        <input name="quantity" type="number" size="4" class="form-control" value="1" min="0" max="{{rs.product.amount}}" step="1">
+                                    </div>
+                                </td>
+                                <td>{{rs.amount}}</td>
+                                <td><a href="/order/deletetocart/{{rs.id}}"><i class="fa fa-times fa-fw"></i></a></td>
+                            </tr>
+                           
+                            
+                        </tbody>
+                        {% endfor %}    
+                    </table>
+
+               </div>
+
+               <div class="text-right">
+                   <a href="/order/addtocart/{{product.id}}" class="btn btn-default"><i class="fa fa-refresh fa-fw"></i> Sepeti Güncelle</i></a>
+               </div>
+
+            </div>
+            <!-- cart contents end -->
+
+
+            <!-- cart total start -->
+            <div class="col-md-4">
+                <div class="text-left">
+                    <h4><b>TOTALS</b> SEPET </h4>
+                </div>
+
+                <table class="table">
+                    <tr>
+                        <th>Sepet Total</th>
+                        <td>{{total}}</td>
+                    </tr>
+                    <tr>
+                        <th>Kargo</th>
+                        <td>Free</td>
+                    </tr>
+                    <tr>
+                        <th>Sipariş Total</th>
+                        <td class="ordertotal">{{total}}</td>
+                    </tr>
+                </table>
+
+                <div class="text-right">
+                    <a href="/order/orderproduct" class="btn btn-primary btn-lg">Proceed to Checkout <i class="fa fa-arrow-circle-right fa-fw"></i></a>
+                </div>
+
+            </div>
+           
+            <!-- cart total end -->
+            
+
+        </div>
+        <!-- row end -->
+        {% else %}
+        <div style="margin-bottom: 400px;"><h1 class="text-center" > Sepet Boş</h1></div>
+        
+        {% endif %}
+    </section>
+    <!-- shop section end -->
+
+</section>
+
+{%endblock%}

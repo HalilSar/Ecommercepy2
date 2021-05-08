@@ -1,0 +1,117 @@
+{% extends 'layout.html' %}
+
+{% block title %} Şiparişlerim {% endblock %}
+{% block description %} {{ settings.description }} {% endblock %}
+{% block keywords %} {{ settings.keywords }} {% endblock %}
+
+<!-- {% block sidebar %} {% include 'sidebar.html' %} {% endblock %} -->
+
+{% block content %}
+
+    <!-- BREADCRUMB -->
+    <section id="title" class="container-fluid wow fadeInDown">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-6">
+                    <h1> Şiparişlerim<small></small></h1>
+                </div>
+                <div class="col-xs-6 text-right breadcrumbs">
+                    <ul class="list-inline list-unstyled">
+                        <li><a href="index-2.html">Ana Sayfa</a></li>
+                        <li>/</li>
+                        <li>Ürünler</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /BREADCRUMB -->
+    <!-- section -->
+    <div class="section">
+        <!-- container -->
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+                <div class="col-md-3">
+                    {% include "user/user_panel.html" %}
+                </div>
+
+                <div style="margin-bottom: 100px;" class="col-md-9">
+                    <div class="order-summary clearfix">
+                        <table class="shopping-cart-table table">
+                            <tr>
+                                <th class="text-left">
+                                    <a href="/user/update" class="primary-btn">Profili Güncelle</a>
+                                    <a href="/user/password" class="primary-btn">Şifreyi Değiştir</a>
+                                </th>
+                                <td><img src="{{ user.userprofile.image.url }}" style="border-radius: 45px; height: 200px "></td>
+                            </tr>
+                            <tr>
+                                <th class="text-left">İsim Soyisim</th>
+                                <td class="text-left">{{ user.first_name}} {{ user.last_name}} </td>
+                            </tr>
+                            <tr>
+                                <th class="text-left">Email</th>
+                                <td class="text-left">{{ user.email}}</td>
+                            </tr>
+                            <tr>
+                                <th class="text-left">Telefon</th>
+                                <td class="text-left">{{ user.userprofile.phone}}</td>
+                            </tr>
+                            <tr>
+                                <th class="text-left">Adres</th>
+                                <td class="text-left">{{ user.userprofile.address}}</td>
+                            </tr>
+                            <tr>
+                                <th class="text-left">Şehir</th>
+                                <td class="text-left">{{ user.userprofile.city}}</td>
+                            </tr>
+                            <tr>
+                                <th class="text-left">Ülke</th>
+                                <td class="text-left">{{ user.userprofile.country}}</td>
+                            </tr>
+                            
+                            <!-- <tr>
+                                <th class="text-left">Ülke</th>
+                                <td class="text-left">{{ order.country}}</td>
+                            </tr> -->
+                            
+    
+                        </table>           
+                        
+                        <table class="shopping-cart-table table">
+                            <tr>
+                               
+                                <th class="text-left">İsim </th>
+                                <th class="text-left">Soyisim </th>
+                                <th class="text-left">Toplam </th>
+                                <th class="text-left">Durum </th>
+                                <th class="text-left">Tarih </th>
+                                <th class="text-left">Detay </th>
+                            </tr>
+                            {% for rs in orders %}
+                                <tr>
+                                    
+                                    <td class="text-left">{{ rs.first_name}} </td>
+                                    <td class="text-left">{{ rs.last_name}} </td>
+                                    <td class="text-left">{{ rs.total}} </td>
+                                    <td class="text-left">{{ rs.status}} </td>
+                                    <td class="text-left">{{ rs.create_at}} </td>
+                                    <td class="text-left"><a class="primary-btn" href="/user/orderdetail/{{ rs.id }}"> Detay </a></td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </div>
+    <!-- /section -->
+
+{% endblock %}

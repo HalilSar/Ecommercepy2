@@ -1,0 +1,107 @@
+{% extends 'layout.html' %}
+
+{% block title %}  {{ user.username }}  {% endblock %}
+{% block description %} {{ settings.description }} {% endblock %}
+{% block keywords %} {{ settings.keywords }} {% endblock %}
+{% block favicon %}<link rel="shortcut icon" href="{{settings.icon.url}}"/>{% endblock %}
+
+
+{% block content %}
+
+<section id="title" class="container-fluid wow fadeInDown">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-6">
+                <h1>Kullanıcı <small>Sayfam</small></h1>
+            </div>
+            <div class="col-xs-6 text-right breadcrumbs">
+                <ul class="list-inline list-unstyled">
+                    <li><a href="index-2.html">Ana Sayfa</a></li>
+                    <li>/</li>
+                    <li>Ürünler</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- PAGE TITLE END -->
+
+
+<!-- CONTENT START -->
+<section id="content">
+
+    <!-- shop section start -->
+    <section id="shop" class="container">
+
+        <!-- row start -->
+        <div class="row">
+
+            <!-- main column start -->
+            <div class="col-md-12">
+
+                <div class="row">
+
+
+                    <!-- product page top info start -->
+                    <div class="col-md-12 product">
+                        <div class="row">
+                            <div class="col-md-3">
+
+                                {% include "user/user_panel.html" %}
+
+                            </div>
+
+                            <div class="col-md-9">
+
+                    
+
+
+                    
+                    <table class="shopping-cart-table table">
+                        <tr>
+                            <th class="text-left">
+                                <a href="/user/update" class="primary-btn">Profili Güncelle</a>
+                                <a href="/user/password" class="primary-btn">Şifreni Değiştir</a>
+                            </th>
+                            <td><img src="{{ profile.image.url }}" style="border-radius: 45px; height: 200px "></td>
+                        </tr>
+                        <tr>
+                            <th class="text-left">İsim Soyisim</th>
+                            <td class="text-left">{{ profile.first_name}} {{ user.last_name}} </td>
+                        </tr>
+                        <tr>
+                            <th class="text-left">Email</th>
+                            <td class="text-left">{{ profile.user.email}}</td>
+                        </tr>
+                        <tr>
+                            <th class="text-left">Telefon</th>
+                            <td class="text-left">{{ profile.phone}}</td>
+                        </tr>
+                        <tr>
+                            <th class="text-left">Adres</th>
+                            <td class="text-left">{{ profile.address}}</td>
+                        </tr>
+                        <tr>
+                            <th class="text-left">Şehir</th>
+                            <td class="text-left">{{ profile.city}}</td>
+                        </tr>
+                        <tr>
+                            <th class="text-left">Ülke</th>
+                            <td class="text-left">{{ profile.country}}</td>
+                        </tr>
+    
+                    </table>
+                    
+                </div>
+            </div>
+    
+   
+
+
+        </div>
+        <!-- /row -->
+    </section>
+    <!-- /container -->
+
+</section>
+{%endblock%}

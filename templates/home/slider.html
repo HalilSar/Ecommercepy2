@@ -1,0 +1,81 @@
+{%load static%}
+{% load mptt_tags %}
+    <section class="cd-hero">
+        {% if menu %}
+            <ul class="list-unstyled cd-hero-slider autoplay">
+                {% recursetree menu %}
+                    <li class="selected" style="background-image:url(edura/images/slides/slide11.jpg);">
+                        <div class="container">
+                            <h1>{% if not node.is_leaf_node %}{{node.title}}{% endif %}</h1>
+                            <h2>{{node.title}} isimli ürünümüz indirimde </h2>
+                            <a href="/menu/{{node.id}}" class="btn btn-primary btn-lg text-uppercase" >Bu Fırsatı Kaçırma</a>
+                        </div>
+                        {% if not node.is_leaf_node %}
+                            <ul>
+                                <li><a href="">{{children}}</a></li>
+                            </ul>
+                        {% endif %}
+                    </li>
+                {% endrecursetree %}
+            
+                <li style="background-image:url({%static 'edura/images/slides/slide10.jpg'%});">
+                    <div class="container">
+                        <h1>Responsive Design</h1>
+                        <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. In consequatur cumque natus!</h2>
+                        <a href="#" class="btn btn-primary btn-lg text-uppercase">Hello World</a>
+                    </div>
+                </li>
+        
+                <li style="background-image:url({%static 'edura/images/slides/slide11.jpg'%});">
+                    <div class="container">
+                        <h1>We Are Edura</h1>
+                        <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. In consequatur cumque natus!</h2>
+                        <a href="#" class="btn btn-primary btn-lg text-uppercase">Hello World</a>
+                    </div>
+                </li>
+        
+            </ul>
+        
+            
+            <div class="arrow-nav">
+                <div class="prev"><a class="hero-prev" href="#"><i class="fa fa-angle-left"></i></a></div>
+                <div class="next"><a class="hero-next" href="#"><i class="fa fa-angle-right"></i></a></div>
+            </div>
+        {% else %}
+            <ul class="list-unstyled cd-hero-slider autoplay">
+                {%for rs in sliderdata %}
+                <li class="selected" style="background-image:url({{ rs.image.url }});">
+                    <div class="container">
+                        <h1>{{rs.title}}</h1>
+                        <h2>{{rs.title}} isimli ürünümüz indirimde </h2>
+                        <a href="{url 'product/details'}" class="btn btn-primary btn-lg text-uppercase">Bu Fırsatı Kaçırma</a>
+                    </div>
+                </li>
+                {%endfor%}
+                <li style="background-image:url({%static 'edura/images/slides/slide10.jpg'%});">
+                    <div class="container">
+                        <h1>Responsive Design</h1>
+                        <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. In consequatur cumque natus!</h2>
+                        <a href="#" class="btn btn-primary btn-lg text-uppercase">Hello World</a>
+                    </div>
+                </li>
+        
+                <li style="background-image:url({%static 'edura/images/slides/slide11.jpg'%});">
+                    <div class="container">
+                        <h1>We Are Edura</h1>
+                        <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. In consequatur cumque natus!</h2>
+                        <a href="#" class="btn btn-primary btn-lg text-uppercase">Hello World</a>
+                    </div>
+                </li>
+        
+            </ul>
+        
+        
+            <div class="arrow-nav">
+                <div class="prev"><a class="hero-prev" href="#"><i class="fa fa-angle-left"></i></a></div>
+                <div class="next"><a class="hero-next" href="#"><i class="fa fa-angle-right"></i></a></div>
+            </div>
+        {% endif %}
+    </section>
+    
+    

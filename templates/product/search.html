@@ -1,0 +1,325 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block title %} {{ settings.title }}Products {% endblock %}
+{% block description %} {{ settings.description }} {% endblock %}
+{% block keywords %} {{ settings.keywords }} {% endblock %}
+{% block favicon %}
+<link rel="shortcut icon" href="{{settings.icon.url}}" />{% endblock %}
+{% block footer %} {% include 'partials/_footer.html' %}{% endblock %}
+{% block content %}
+
+<section id="title" class="container-fluid wow fadeInDown">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-6">
+                <h1>Shop <small>Catalog</small></h1>
+            </div>
+            <div class="col-xs-6 text-right breadcrumbs">
+                <ul class="list-inline list-unstyled">
+                    <li><a href="index-2.html">Home</a></li>
+                    <li>/</li>
+                    <li>Shop</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- PAGE TITLE END -->
+
+
+<!-- CONTENT START -->
+<section id="content">
+
+    <section id="shop" class="container">
+
+        <div class="row">
+
+            <!-- sidebar start -->
+            <div id="sidebar" class="col-md-3">
+
+                <div class="widget">
+                    <form action="/search/" class="form-inline" method="POST" >
+                        {%csrf_token%}
+                        <div class="input-group">
+                            <input  type="text" class="form-control input-lg" placeholder="Arama Yapın">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default btn-lg" type="submit"><i class="fa fa-search"></i></button>
+                            </span>
+                        </div>
+
+                     </form>
+                </div>
+
+                <div class="widget">
+                    <!-- <h4>Kategoriler</h4>
+                    {% load mptt_tags %}
+                    <ul class="list-unstyled link-list">
+                        {% recursetree categories %}
+                        <li><i class="fa fa-angle-right fa-fw" aria-hidden="true"></i> <a href="#">
+                                {{ node.title }}<span class="pull-right">(5)</a></a>
+                            {% if not node.is_leaf_node %}
+                            <ul>
+                               <a href="#">{{ children }}</a>
+                            </ul>
+                            {% endif %}
+                        </li>
+                        {% endrecursetree %}
+                    </ul>  -->
+
+                </div>
+
+                <div class="widget">
+                    <h4>FEATURED</h4>
+
+                    <div class="products-list">
+
+                        <div class="media">
+                            <a class="media-left" href="#">
+                                <img alt="" class="img-responsive product-thumb" src="images/products/product1_thumb.jpg">
+                            </a>
+                            <div class="media-body">
+                                <a href="#" class="product-title">Photo Camera</a>
+                                <p class="product-price">$153</p>
+                            </div>
+                        </div>
+
+                        <div class="media">
+                            <a class="media-left" href="#">
+                                <img alt="" class="img-responsive product-thumb" src="images/products/product2_thumb.jpg">
+                            </a>
+                            <div class="media-body">
+                                <a href="#" class="product-title">Wood Chair</a>
+                                <p class="product-price">$99</p>
+                            </div>
+                        </div>
+
+                        <div class="media">
+                            <a class="media-left" href="#">
+                                <img alt="" class="img-responsive product-thumb" src="images/products/product3_thumb.jpg">
+                            </a>
+                            <div class="media-body">
+                                <a href="#" class="product-title">Comfortable Sofa</a>
+                                <p class="product-price">$526</p>
+                            </div>
+                        </div>
+
+                        <div class="media">
+                            <a class="media-left" href="#">
+                                <img alt="" class="img-responsive product-thumb" src="images/products/product4_thumb.jpg">
+                            </a>
+                            <div class="media-body">
+                                <a href="#" class="product-title">Hand Bag</a>
+                                <p class="product-price">$125</p>
+                            </div>
+                        </div>
+
+                        <div class="media">
+                            <a class="media-left" href="#">
+                                <img alt="" class="img-responsive product-thumb" src="images/products/product1_thumb.jpg">
+                            </a>
+                            <div class="media-body">
+                                <a href="#" class="product-title">Photo Camera</a>
+                                <p class="product-price">$29</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+            <!-- sidebar end -->
+
+            <!-- right column start -->
+            <div class="col-md-9">
+
+                <div class="row">
+
+                    <div class="col-md-12 wow fadeIn">
+                        <div class="row product-results">
+                            <div class="product-results">
+                                <div class="col-xs-8">
+                                    <p class="woocommerce-result-count">Showing 1–12 of 25 results</p>
+                                </div>
+
+                                <div class="col-xs-4 text-right">
+                                    <form method="get" class="woocommerce-ordering">
+                                        <select class="form-control" name="orderby">
+                                            <option selected="selected" value="menu_order">Default sorting</option>
+                                            <option value="popularity">Sort by popularity</option>
+                                            <option value="rating">Sort by rating</option>
+                                            <option value="date">Newest on top</option>
+                                            <option value="price">Price: low to high</option>
+                                            <option value="price-desc">Price: high to low</option>
+                                        </select>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {% if products %}
+                        {% for product in products %}
+                        <div class="col-md-4 wow fadeInUp">
+                            <div class="text-center product-item">
+                                <div class="product-item-top">
+                                    <img alt="" class="img-responsive" src="{{ product.image.url }}">
+                                    <div class="mask"></div>
+                                    <ul class="list-unstyled list-inline">
+                                        <li><a href="#"><i class="fa fa-link fa-fw"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-cart-plus fa-fw"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="product-item-inner">
+                                    <h3 class="product-title"><a href="#">{{ product.title }}</a></h3>
+                                    <p class="product-price">{{product.price}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    {% endif %}
+
+
+
+ 
+
+                    <div class="col-md-4 wow fadeInUp">
+                        <div class="text-center product-item">
+                            <div class="product-item-top">
+                                <img alt="" class="img-responsive" src="images/products/product4_thumb.jpg">
+                                <div class="mask"></div>
+                                <ul class="list-unstyled list-inline">
+                                    <li><a href="#"><i class="fa fa-link fa-fw"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-cart-plus fa-fw"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="product-item-inner">
+                                <h3 class="product-title"><a href="#">Hand Bag</a></h3>
+                                <p class="product-price">$125</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 wow fadeInUp">
+                        <div class="text-center product-item">
+                            <div class="product-item-top">
+                                <img alt="" class="img-responsive" src="images/products/product1_thumb.jpg">
+                                <div class="mask"></div>
+                                <ul class="list-unstyled list-inline">
+                                    <li><a href="#"><i class="fa fa-link fa-fw"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-cart-plus fa-fw"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="product-item-inner">
+                                <h3 class="product-title"><a href="#">Photo Camera</a></h3>
+                                <p class="product-price">$153</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 wow fadeInUp">
+                        <div class="text-center product-item">
+                            <div class="product-item-top">
+                                <img alt="" class="img-responsive" src="images/products/product2_thumb.jpg">
+                                <div class="mask"></div>
+                                <ul class="list-unstyled list-inline">
+                                    <li><a href="#"><i class="fa fa-link fa-fw"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-cart-plus fa-fw"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="product-item-inner">
+                                <h3 class="product-title"><a href="#">Wood Chair</a></h3>
+                                <p class="product-price">$59</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 wow fadeInUp">
+                        <div class="text-center product-item">
+                            <div class="product-item-top">
+                                <img alt="" class="img-responsive" src="images/products/product3_thumb.jpg">
+                                <div class="mask"></div>
+                                <ul class="list-unstyled list-inline">
+                                    <li><a href="#"><i class="fa fa-link fa-fw"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-cart-plus fa-fw"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="product-item-inner">
+                                <h3 class="product-title"><a href="#">Hand Bag</a></h3>
+                                <p class="product-price">$129</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-4 wow fadeInUp">
+                        <div class="text-center product-item">
+                            <div class="product-item-top">
+                                <img alt="" class="img-responsive" src="images/products/product4_thumb.jpg">
+                                <div class="mask"></div>
+                                <ul class="list-unstyled list-inline">
+                                    <li><a href="#"><i class="fa fa-link fa-fw"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-cart-plus fa-fw"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="product-item-inner">
+                                <h3 class="product-title"><a href="#">Wood Chair</a></h3>
+                                <p class="product-price">$119</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+                    <div class="col-md-12 wow fadeIn">
+                        <div id="pagination" class="row text-center">
+                            <nav aria-label="Page navigation">
+                                <ul class="pagination">
+                                    <li class="disabled">
+                                        <a href="#" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+                                    <li class="active"><a href="#">1</a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li><a href="#">4</a></li>
+                                    <li><a href="#">5</a></li>
+                                    <li class="disabled"><a href="#">...</a></li>
+                                    <li><a href="#">20</a></li>
+                                    <li>
+                                        <a href="#" aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- right column end -->
+
+        </div>
+
+
+
+    </section>
+
+
+
+</section>
+<!-- CONTENT END -->
+
+
+
+
+</div>
+{% endblock %}
