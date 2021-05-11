@@ -8,7 +8,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'Ecommerce',
-        'USER': 'wonderman',
+        'USER': 'Halil37',
         'PASSWORD': 'covboybebop123',
         'HOST':'Halil37.mysql.pythonanywhere-services.com',
     }
