@@ -9,8 +9,8 @@ from home.models import Setting
 from django.db.models import Q
 from .form import SearchForm
 def index(request):
-    # product_list = Product.objects.get_queryset().order_by('id')
-    products= Product.objects.all()
+    product_list = Product.objects.get_queryset().order_by('id')
+    # products= Product.objects.all()
     categories =Category.objects.all()
     settings = Setting.objects.get(pk=1)
     # query = request.GET.get('q')
@@ -20,9 +20,9 @@ def index(request):
     #         Q(description__icontains=query) 
     #     ).distinct()
     
-    # paginator = Paginator(product_list, 3)
-    # page_number = request.GET.get('page')
-    # products = paginator.get_page(page_number)
+    paginator = Paginator(product_list, 1)
+    page_number = request.GET.get('page')
+    products = paginator.get_page(page_number)
     context = {
         'products': products,
         'categories' : categories,

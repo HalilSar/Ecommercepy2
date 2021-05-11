@@ -30,7 +30,7 @@
                         {%if request.session.cart_items == 0 %}
                             Sepet 
                         {% else %}
-                            Sepet ({{request.session.cart_items}})
+                            Sepet <small>({{request.session.cart_items}})</small>   
                         {%endif%}
                     </a></li>   
                     {% if user.is_authenticated %}

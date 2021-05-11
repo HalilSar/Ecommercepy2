@@ -64,6 +64,7 @@ def deletetocart(request,id):
 def shopcart(request):
     current_user = request.user  # Access User Session information
     shopcart = ShopCart.objects.filter(user_id=current_user.id)
+    settings=Setting.objects.get(id=1)
     request.session['cart_items'] = ShopCart.objects.filter(user_id= current_user.id).count()
     total=0
     for rs in shopcart:
@@ -71,6 +72,7 @@ def shopcart(request):
     #return HttpResponse(str(total))
     context={'shopcart': shopcart,
              'total': total,
+             'settings':settings,
              }
     return render(request,'order/shoppingcart.html',context)
 
