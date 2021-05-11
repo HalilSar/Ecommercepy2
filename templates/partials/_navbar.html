@@ -52,7 +52,7 @@
                         </li>
                         <li {% if 'register' in request.path %} class="nav-item active" {% else %} class="nav-item" {%endif %}>
                             
-                            <a href="#" class="nav-link">Kayıt</a>
+                            <a href="{% url 'signup_view' %}" class="nav-link">Kayıt</a>
 
                         {% endif %}
                     </ul>

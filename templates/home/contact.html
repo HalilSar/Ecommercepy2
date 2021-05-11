@@ -1,16 +1,36 @@
 {%extends 'layout.html'%}
+{% block title %} İletişim {% endblock %}
+{% block description %} {{ settings.description }} {% endblock %}
+{% block keywords %} {{ settings.keywords }} {% endblock %}
+{% block favicon %}<link rel="shortcut icon" href="{{settings.icon.url}}"/>{% endblock %}
+{% block sidebar %} {% include 'home/slider.html' %} {% endblock %}
 {%load static%}
 {% block content %}
-
+<section id="title" class="container-fluid wow fadeInDown">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-6">
+                <h1>İLETİŞİM</h1>
+            </div>
+            <div class="col-xs-6 text-right breadcrumbs">
+                <ul class="list-inline list-unstyled">
+                    <li><a href="index-2.html">Home</a></li>
+                    <li>/</li>
+                    <li>About Us</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
 <section id="content">
 
     <div class="container">
 
         <div class="row">
 
-            <div class="col-xs-12 text-center padding25">
-                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eget leo at velit imperdiet varius. In eu ipsum vitae velit congue iaculis vitae at risus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </div>
+            <!-- <div class="col-xs-12 text-center padding25">
+               
+            </div> -->
 
 
             <div class="col-md-6">
@@ -52,9 +72,22 @@
 
                 <form action="" method="post">
                     {% csrf_token %}
-                    {{ form.as_p }}
+                    {% for field in form %}
+                            <div class="form-group">
+                                
+                                {{ field.label_tag }}<br>
+                                {{ field }}
+                                {% if field.help_text %}
+                                        <small style="color: grey">{{ field.help_text }}</small>
+                                    {% endif %}
+                                    {% for error in field.errors %}
+                                        <p style="color: red">{{ error }}</p>
+                                    {% endfor %}
+                                
+                            </div>
+                    {%endfor%}
                     <div class="form-group col-xs-12 text-left">
-                        <button type="submit" class="btn btn-primary btn-lg"><i class="fa fa-send fa-fw"></i> SEND EMAIL</button>
+                        <button type="submit" class="btn btn-primary btn-lg"><i class="fa fa-send fa-fw"></i> Mesaj Gönder</button>
                     </div>
                 </form>
 

@@ -1,4 +1,5 @@
 from django.db import models
+from django import forms
 from ckeditor_uploader.fields import RichTextUploadingField
 # Create your models here.
 from django.forms import ModelForm, TextInput, Textarea
@@ -58,18 +59,15 @@ class ContactFormMessage(models.Model):
         return self.name
 
 class ContactForm(ModelForm):
+    name = forms.CharField(widget=forms.TextInput(attrs = {'class': 'form-control input-lg','placeholder':'İsminiz*'}),max_length=100,label= 'İsminizi Girin: :')
+    phone = forms.CharField(widget=forms.TextInput(attrs = {'class': 'form-control input-lg','placeholder':'Telefon'}),max_length=100,label= 'Telefonunuzu Girin: :')
+    subject = forms.CharField(widget=forms.TextInput(attrs = {'class': 'form-control input-lg','placeholder':'Konu'}),max_length=100,label= 'Konuyu Girin: :')
+    email = forms.CharField(widget=forms.TextInput(attrs = {'class': 'form-control input-lg','placeholder':'Email Adresiniz'}),max_length=100,label= 'Email Girin: :')
+    message = forms.CharField(widget=forms.Textarea(attrs = {'class': 'form-control input-lg','placeholder':'Mesajınız*','rows':'12'}),max_length=100,label= 'İsminizi Girin: :')
     class Meta:
         model = ContactFormMessage
-        fields = ['name', 'email', 'subject','message']
-        widgets = {
-            'name'   : TextInput(attrs={'class': 'form-control input-lg','placeholder':'Your Name*'}),
-            'surname'   : TextInput(attrs={'class': 'form-control input-lg','placeholder':'SurName*'}),
-            'phone'   : TextInput(attrs={'class': 'form-control input-lg','placeholder':'Your Phone'}),
-            'subject' : TextInput(attrs={'class': 'form-control input-lg','placeholder':'Subject'}),
-            'email'   : TextInput(attrs={'class': 'form-control input-lg','placeholder':'Your Email'}),
-            'message' : Textarea(attrs={'class': 'form-control','placeholder':'Your Message*','rows':'12'}),
-        }
-
+        fields = ['name', 'email','phone', 'subject','message']
+      
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     phone = models.CharField(blank=True, max_length=20)

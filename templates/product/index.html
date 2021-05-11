@@ -55,7 +55,7 @@
                     {% load mptt_tags %}
                     <ul class="list-unstyled link-list">
                         {% recursetree categories %}
-                        <li><i class="fa fa-angle-right fa-fw" aria-hidden="true"></i> <a href="#">
+                        <li><i class="fa fa-angle-right fa-fw" aria-hidden="true"></i> <a href="/category/{{node.id}}/{{node.slug}}">
                                 {{ node.title }}<span class="pull-right">(5)</a></a>
                             {% if not node.is_leaf_node %}
                             <ul>
