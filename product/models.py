@@ -1,4 +1,4 @@
-from django.db import models
+from django.db import  models
 from django.contrib.auth.models import User
 from django.forms import ModelForm
 from django.utils.safestring import mark_safe
@@ -14,7 +14,7 @@ class Category(MPTTModel):
     keywords = models.CharField(max_length=255)
     description = models.TextField(max_length=255)
     image=models.ImageField(blank=True,upload_to='images/')
-    status=models.CharField(max_length=10, choices=STATUS)
+    status=models.CharField(max_length=10, choices=STATUS,default="True")
     slug = models.SlugField(null=False,unique=True)
     create_at=models.DateTimeField(auto_now_add=True)
     update_at=models.DateTimeField(auto_now=True)
@@ -50,7 +50,7 @@ class Product(models.Model):
     minamount=models.IntegerField(default=3)   
     detail=RichTextUploadingField()
     slug = models.SlugField(null=False,unique=True)
-    status=models.CharField(max_length=10,choices=STATUS)
+    status=models.CharField(max_length=10,choices=STATUS,default="True")
     create_at=models.DateTimeField(auto_now_add=True)
     update_at=models.DateTimeField(auto_now=True)
     def __str__(self):

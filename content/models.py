@@ -17,7 +17,7 @@ class Menu(MPTTModel):
     #content models.OneToOnteRel(Content, blank= True, )
     title = models.CharField(max_length=100,unique=True)
     link = models.CharField(max_length=100,blank=True)
-    status = models.CharField(max_length=10,choices=STATUS)
+    status = models.CharField(max_length=10,choices=STATUS,default='New')
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
 
@@ -45,14 +45,14 @@ class Content(models.Model):
     )
 
     menu = models.OneToOneField(Menu, null=True, blank=True, on_delete=models.CASCADE)
-    type = models.CharField(max_length=10, choices=TYPE)
+    type = models.CharField(max_length=10, choices=TYPE,default='menu')
     title = models.CharField(max_length=150)
     keywords = models.CharField(blank=True,max_length=255)
     description = models.CharField(blank=True,max_length=255)
     image = models.ImageField(blank=True, null=True,upload_to='images/')
     detail = RichTextUploadingField()
     slug = models.SlugField(null=False, unique=True)
-    status = models.CharField(max_length=10,choices=STATUS)
+    status = models.CharField(max_length=10,choices=STATUS,default='True')
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
     def __str__(self):

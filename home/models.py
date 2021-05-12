@@ -30,7 +30,7 @@ class Setting(models.Model):
     aboutus = RichTextUploadingField(blank=True)
     contact =  RichTextUploadingField(blank=True)
     references = RichTextUploadingField(blank=True)
-    status=models.CharField(max_length=10,choices=STATUS)
+    status=models.CharField(max_length=10,choices=STATUS,default='True')
     create_at=models.DateTimeField(auto_now_add=True)
     update_at=models.DateTimeField(auto_now=True)
 
