@@ -7,7 +7,7 @@ ALLOWED_HOSTS = ['halil37.pythonanywhere.com']
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'Ecommerce',
+        'NAME': 'Halil37$Ecommerce',
         'USER': 'Halil37',
         'PASSWORD': 'covboybebop123',
         'HOST':'Halil37.mysql.pythonanywhere-services.com',

@@ -63,7 +63,7 @@ class ContactForm(ModelForm):
     phone = forms.CharField(widget=forms.TextInput(attrs = {'class': 'form-control input-lg','placeholder':'Telefon'}),max_length=100,label= 'Telefonunuzu Girin: :')
     subject = forms.CharField(widget=forms.TextInput(attrs = {'class': 'form-control input-lg','placeholder':'Konu'}),max_length=100,label= 'Konuyu Girin: :')
     email = forms.CharField(widget=forms.TextInput(attrs = {'class': 'form-control input-lg','placeholder':'Email Adresiniz'}),max_length=100,label= 'Email Girin: :')
-    message = forms.CharField(widget=forms.TextInput(attrs = {'class': 'form-control input-lg','placeholder':'Mesajınız*','rows':'12'}),max_length=100,label= 'İsminizi Girin: :')
+    message = forms.CharField(widget=forms.Textarea(attrs = {'class': 'form-control input-lg','placeholder':'Mesajınız*','rows':'12'}),max_length=100,label= 'İsminizi Girin: :')
     class Meta:#Textarea
         model = ContactFormMessage
         fields = ['name', 'email','phone', 'subject','message']
@@ -89,13 +89,6 @@ class UserProfile(models.Model):
            
         
             
-    
-    
-    
-
-
-    
-
 class UserForm(ModelForm):
     class Meta:
         model = UserProfile
