@@ -13,18 +13,18 @@ ALLOWED_HOSTS = ['halil37.pythonanywhere.com']
 #         'HOST':'Halil37.mysql.pythonanywhere-services.com',
 #     }
 #}
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'OPTIONS': {
-#             'read_default_file': '/path/to/my.cnf',
-#         },
-#     }
-# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'OPTIONS': {
+            'read_default_file': 'commerce/settings/my.cnf',
+        },
     }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 STATIC_ROOT = os.path.join(BASE_DIR,"staticfiles")
